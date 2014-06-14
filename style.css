@@ -1,0 +1,26 @@
+/*
+Theme Name: Igreja Evangélica da Zona Sul - CleanCanvas
+Theme URI: http://www.iebzonasul.org
+Author: Rogério Nóbrega
+Author URI: http://www.google.com
+Description: Segundo tema desenvolvido para a Igreja.
+Version: 1.0
+Text Domain: iebzs
+*/
+
+#feature_slider .slide .info h2 {
+	color: #fff;
+	font-size: 50px;
+	font-weight: normal;
+	line-height: 56px;
+	text-shadow: 1px 1px 1px #31393d; 
+}
+
+#feature_slider .slide .info {
+  position: absolute;
+  top: 150px;
+  left: 13%;
+  width: 30%;
+  display: none;
+  z-index: 10; 
+}
