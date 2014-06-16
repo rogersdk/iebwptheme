@@ -8,8 +8,8 @@
                     </h3>
                     <?php 
                         $args = array(
-                            'post_types'    =>  array('post','boletins','testemunhos'),
-                            'showposts'     =>  2
+                            'post_type'    =>  array('post','beletim-informativo','testemunho'),
+                            'posts_per_page'	=>	2,
                         );
                         query_posts($args);
                         if(have_posts()):
@@ -18,7 +18,7 @@
                     ?>
                     <div class="post">
                         <a href="blogpost.html">
-                            <img src="<?php echo get_template_directory_uri(); ?>/img/recent_post1.png" class="img-circle" />
+                            <?php the_post_thumbnail('testemunho',array('class'=>'img-circle'));?>
                         </a>
                         <div class="date">
                             <?php the_time('D, d M'); ?>
@@ -47,38 +47,58 @@
                 </div>
                 <div class="col-sm-4 testimonials">
                     <h3 class="footer_header">
-                        Testemunhos
+                        Testemunho Recente
                     </h3>
+                    
+                    <?php 
+                    	$args = array(
+                    		'post_type'	=> 'testemunhos',
+                    		'showposts'	=>	1
+                    	);
+                    	
+                    	query_posts($args);
+                    	if(have_posts()):
+                    		while(have_posts()):
+                    			the_post();
+                    ?>
                     <div class="wrapper">
                         <div class="quote">
-                            <span>“</span>
-                            There are many variations of passages of randomised words which don't look even slightly believable. You need to be sure there isn't anything embarrassing of text.
+                            <span></span>
+                            	<?php the_excerpt();?>
                             <span></span>
                         </div>
                         <div class="author">
-                            <img src="<?php echo get_template_directory_uri(); ?>/img/user-display.png" />
-                            <div class="name">Alejandra Galvan Castillo</div>
+                        	<?php the_post_thumbnail('testemunho',array('class'=>'img-circle'));?>
+                            <div class="name"><?php the_author();?></div>
                             <div class="info">
-                                Details Canvas
+                                <?php the_date();?>
                             </div>
                         </div>
                     </div>
+                    <?php 
+                    		endwhile;
+                    	endif;
+                    ?>
                 </div>
                 <div class="col-sm-4 contact">
                     <h3 class="footer_header">
                         Entre em Contato
                     </h3>
-                    <form action="<?php bloginfo('url') ?>/wp-admin/admin-ajax.php" method="post">
+                    <div id="retorno" class="hide text-center">
+	                    <h5>Mensagem enviada com sucesso!</h5>
+                    </div>
+                    <form id="form-contato" action="<?php bloginfo('url') ?>/wp-admin/admin-ajax.php" method="post">
                         <input type="hidden" name="action" value="enviarContato" />
-                        <input type="text" placeholder="Seu Nome" />
-                        <input type="text" placeholder="Seu email" />
-                        <textarea rows="3" placeholder="Digite sua Mensagem"></textarea>
-                        <input type="submit" value="Send" />
+                        <input type="text" name="nome" placeholder="Seu Nome" required />
+                        <input type="text" name="email" placeholder="Seu email" required />
+                        <textarea name="mensagem" rows="3" placeholder="Digite sua Mensagem" required></textarea>
+                        <input type="submit" value="Enviar Mensagem" />
                     </form>
                 </div>
             </div>
             <div class="row credits">
                 <div class="col-md-12">
+                    <!--
                     <div class="row social">
                         <div class="col-md-12">
                             <a href="index.html#" class="facebook">
@@ -111,21 +131,30 @@
                             </a>
                         </div>
                     </div>
+                    -->
                     <div class="row copyright">
                         <div class="col-md-12">
-                            © 2014 Igreja Evangélica Batista Zona Sul.
+                            © <?php the_time('Y');?> Igreja Evangélica Batista Zona Sul.
                         </div>
                     </div>
                 </div>            
             </div>
         </div>
     </footer>
-
+	
+	
+	
+	
     <!-- Scripts -->
     <script src="http://code.jquery.com/jquery-latest.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.min.js"></script>
-    <script src="<?php echo get_template_directory_uri(); ?>/js/theme.js"></script>
-    <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/index-slider.js"></script>	
+    <script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.min.js" type="text/javascript" ></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/libs/jquery.validate.min.js" type="text/javascript" ></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/libs/jquery.forms.js" type="text/javascript" ></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/theme.js" type="text/javascript" ></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/index-slider.js" type="text/javascript" ></script>
+    
+    
+    
     <?php wp_footer(); ?>
 </body>
 </html>

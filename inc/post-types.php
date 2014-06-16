@@ -1,8 +1,8 @@
 <?php
 
 /***
-**Registering Post Type: Boletim Informativo
-***/
+ **Registering Post Type: Boletim Informativo
+ ***/
 
 $labels = array(
     'name'               => 'Boletim Informativo',
@@ -18,9 +18,9 @@ $labels = array(
     'not_found_in_trash' => 'Nenhum Boletim Informativo Encontrado na Lixeira',
     'parent_item_colon'  => '',
     'menu_name'          => 'Boletins Informativos'
-  );
+    );
 
-  $args = array(
+    $args = array(
     'labels'             => $labels,
     'public'             => true,
     'publicly_queryable' => true,
@@ -31,9 +31,43 @@ $labels = array(
     'capability_type'    => 'post',
     'has_archive'        => true,
     'hierarchical'       => false,
-    'menu_position'      => null,
+    'menu_position'      => 5,
     'supports'           => array('title','editor','author','thumbnail','excerpt')
     //'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments' )
+    );
+
+    register_post_type( 'boletins-informativos', $args );
+    
+    $labels = array(
+    'name'               => 'Testemunho',
+    'singular_name'      => 'Testemunho',
+    'add_new'            => 'Adicionar Novo',
+    'add_new_item'       => 'Adicionar Novo Testemunho',
+    'edit_item'          => 'Editar Testemunho',
+    'new_item'           => 'Novo Testemunho',
+    'all_items'          => 'Todos Testemunho',
+    'view_item'          => 'Visualizar Testemunho',
+    'search_items'       => 'Buscar Testemunho',
+    'not_found'          => 'Nenhum Testemunho Encontrado',
+    'not_found_in_trash' => 'Nenhum Testemunho Encontrado na Lixeira',
+    'parent_item_colon'  => '',
+    'menu_name'          => 'Testemunhos'
   );
 
-  register_post_type( 'boletim-informativo', $args );
+  $args = array(
+    'labels'             => $labels,
+    'public'             => true,
+    'publicly_queryable' => true,
+    'show_ui'            => true,
+    'show_in_menu'       => true,
+    'query_var'          => true,
+    'rewrite'            => array( 'slug' => 'testemunho' ),
+    'capability_type'    => 'post',
+    'has_archive'        => true,
+    'hierarchical'       => false,
+    'menu_position'      => 6,
+    'supports'           => array('title','editor','author','thumbnail','excerpt')
+  );
+  
+
+  register_post_type( 'testemunhos', $args );

@@ -66,6 +66,7 @@ function iebzs_setup() {
 	add_image_size( 'destaque-image', '560', '320', true );
 	add_image_size( 'small-image', '400', '300', true );
 	add_image_size( 'x-small-image', '200', '200', true );
+	add_image_size( 'testemunho','58','58',true);
 
 	/**
 	** Includes
@@ -78,7 +79,6 @@ function iebzs_setup() {
 }
 
 add_action( 'after_setup_theme', 'iebzs_setup' );
-
 add_filter('show_admin_bar', '__return_false');
 
 
@@ -89,3 +89,26 @@ function get_pagename(){
 		return 'contato';
 	}
 }
+
+function enviarContato(){
+	foreach($_POST as $key=>$value){
+		$$key = $value;
+	}
+	
+	$to = "rogeriocnobrega@gmail.com";
+	
+	$subject = "Formulário de Contato - $nome";
+	
+	if( wp_mail($to,$subject,$mensagem) ){
+		$returnMsg = "Mensagem enviada com sucesso!";
+	}else{
+		$returnMsg = "Falha ao enviar sua mensagem!";
+	}
+	
+	echo $returnMsg;
+	die();
+	
+}
+
+add_action("wp_ajax_enviarContato", "enviarContato");
+add_action("wp_ajax_nopriv_enviarContato", "enviarContato");

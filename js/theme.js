@@ -73,3 +73,33 @@ var servicesCircle = {
     }
 }
 
+/* Contact Form Validation*/
+$( document ).ready(function() {
+	var validator = $('#form-contato').validate({
+		rules:{
+			email:{
+				email:true
+			}
+		},
+		messages:{
+			nome:"",
+			email:"",
+			mensagem:""
+		},
+		errorPlacement: function() {
+	        return false;
+	    },
+		submitHandler:function(form){
+			$(form).ajaxSubmit({
+				target: "#retorno",
+				success:function(){
+					$("#retorno").removeClass('hide');
+				}
+				
+				
+			});
+		},
+	});
+	validator.resetForm();
+});
+

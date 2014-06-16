@@ -1,36 +1,18 @@
 <?php get_header(); ?>
- <section id="feature_slider" class="lol">
-
-        <!-- 
-            Each slide is composed by <img> and .info
-            - .info's position is customized with css in index.css
-            - each <img> parallax effect is declared by the following params inside its class:
-            
-            example: class="asset left-472 sp600 t120 z3"
-            left-472 means left: -472px from the center
-            sp600 is speed transition
-            t120 is top to 120px
-            z3 is z-index to 3
-            Note: Maintain this order of params
-
-            For the backgrounds, you can combine from the bgs folder :D
-        -->
-        <?php
-        $args = array(
-            'post-type' =>  'post',
-            'posts_per_page'    =>  '5'
-        );
-
-        query_posts($args);
-
-        if(have_posts()):
-            while(have_posts()):
+	<section id="feature_slider" class="lol">
+		<?php
+		$args = array(
+		    'post_type' =>  'post',
+	        'posts_per_page'    =>  '5'
+		);
+		query_posts($args);
+		if(have_posts()):
+			while(have_posts()):
                 the_post();
                 $url = get_template_directory_uri().'/img/backgrounds/aqua.jpg';
                 //$url = 'http://cleancanvas.herokuapp.com/img/backgrounds/color-splash.jpg';
         ?>
             <article id="" class="slide" style="background:url(<?php echo "'$url'"; ?>);" >
-
                 <?php the_post_thumbnail('destaque-image',array('class'=>'asset left-30 sp600 t120 z1 imgshadow')); ?>
                  <div class="info">
                     <h2><a style="color:#fff;"  href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
@@ -40,9 +22,9 @@
             endwhile;
         endif;
         ?>    
-    </section>
+</section>
 
-<div class="container">
+<div id="home_content" class="container">
     <div class="section_header">
         <h3>Notícias Recentes</h3>
     </div>
@@ -52,7 +34,8 @@
         <?php
         $args = array(
             'post_type'     =>  'post',
-            'posts_per_page'   => 3
+            'posts_per_page'   => 3,
+        	'offset'		=> 3
         );
 
         query_posts($args);
@@ -65,7 +48,7 @@
             
                 <div class="caption">
                     <h4>
-                        <a href="#">
+                        <a href="<?php the_permalink();?>">
                         <?php the_title(); ?>
                         </a>
                     </h4>    
@@ -124,8 +107,6 @@
 
 
 </div>
-
-
 <?php /* ?>
     <div id="showcase">
         <div class="container">

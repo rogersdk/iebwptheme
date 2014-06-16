@@ -15,7 +15,7 @@ $_pagename = get_pagename();
     <meta charset="<?php echo get_bloginfo( 'charset' ); ?>" >
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
-	<title><?php wp_title( '|'.bloginfo('name'), true, 'right' ); ?></title>
+	<title><?php wp_title( '|'.bloginfo('name'), true, 'left' ); ?></title>
     <!-- Styles -->
     <link href="<?php echo get_template_directory_uri(); ?>/css/bootstrap/bootstrap.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/compiled/bootstrap-overrides.css" type="text/css" />
@@ -41,7 +41,7 @@ $_pagename = get_pagename();
 
 
         <div class="container-fluid">
-            <div class="navbar-header text-left pull-left col-md-4">
+            <div class="navbar-header text-left col-md-4">
                 <a href="<?php bloginfo('home'); ?>" class="navbar-brand"><strong><?php bloginfo('title'); ?></strong></a>
                 <button type="button" class="navbar-toggle pull-right" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -52,44 +52,24 @@ $_pagename = get_pagename();
                 
             </div>
 
-            <div class="collapse navbar-collapse navbar-ex1-collapse" role="navigation">
-                    <?php
-                    $defaults = array(
-                        'menu_class'      => 'nav navbar-nav navbar-left',
+            <div class="collapse navbar-collapse navbar-ex1-collapse col-md-8" role="navigation">
+				<?php
+					$defaults = array(
+                        'menu_class'      => 'nav navbar-nav',
                         'echo'            => true,
                         'depth'           => 0,
                         'walker'          => new Custom_Walker
                     );
                     wp_nav_menu( $defaults );
                     ?>
-                    
-                <!-- <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="index.html">HOME</a></li>
-                    <li><a href="about-us.html">ABOUT US</a></li>
-                    <li class="dropdown">
-                        <a href="index.html#" class="dropdown-toggle" data-toggle="dropdown">PAGES <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="features.html">Features</a></li>
-                            <li><a href="services.html">Services</a></li>
-                            <li><a href="portfolio.html">Portfolio</a></li>
-                            <li><a href="portfolio-item.html">Portfolio Item</a></li>
-                            <li><a href="coming-soon.html">Coming Soon</a></li>
-                            <li><a href="sign-in.html">Sign in</a></li>
-                            <li><a href="sign-up.html">Sign up</a></li>
-                            <li><a href="backgrounds.html">Backgrounds</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="pricing.html">PRICING</a></li>
-                    <li><a href="contact.html">CONTACT US</a></li>
-                    <li><a href="sign-up.html">Sign up</a></li>
-                    <li><a href="sign-in.html">Sign in</a></li>
-                </ul> -->
-                <form class="navbar-form navbar-right" >                
+
+                <!-- <form class="navbar-form navbar-right" >                
                     <div class="form-group">
                         <input type="search" class="search-field" placeholder="Pesquisar…" value="" name="s" title="Pesquisar por:" />
                     </div>
                     <input class="btn-primary-tema" type="submit" value="Buscar" />
                 </form>
+                 -->
             </div>
 
         </div> <!-- /container -->
