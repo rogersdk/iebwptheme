@@ -73,6 +73,7 @@ function iebzs_setup() {
 	**/
 	require_once 'inc/custom-walker.php';
 	require_once 'inc/post-types.php';
+	require_once 'inc/meta-boxes.php';
 
 
 
@@ -85,8 +86,12 @@ add_filter('show_admin_bar', '__return_false');
 function get_pagename(){
 	if(is_home()){
 		return 'home';
-	}elseif(is_page('contato')){
-		return 'contato';
+	}elseif(is_page('sobre-a-igreja')){
+		return 'about';
+	}elseif(is_single()){
+		return 'single';
+	}elseif(is_archive('ministerio')){
+		return 'services';
 	}
 }
 

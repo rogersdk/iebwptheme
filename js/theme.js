@@ -73,6 +73,13 @@ var servicesCircle = {
     }
 }
 
+/* Fancybox gallery */
+$( document ).ready(function(){
+	$('.fancybox').fancybox();
+});
+
+
+
 /* Contact Form Validation*/
 $( document ).ready(function() {
 	var validator = $('#form-contato').validate({

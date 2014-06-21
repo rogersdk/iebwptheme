@@ -133,6 +133,9 @@
                     </div>
                     -->
                     <div class="row copyright">
+                    	<div class="col-md-12">
+							<img src="<?php echo get_template_directory_uri(); ?>/images/somente-logo-130x104.png"  />
+                    	</div>
                         <div class="col-md-12">
                             © <?php the_time('Y');?> Igreja Evangélica Batista Zona Sul.
                         </div>
@@ -150,6 +153,7 @@
     <script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.min.js" type="text/javascript" ></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/libs/jquery.validate.min.js" type="text/javascript" ></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/libs/jquery.forms.js" type="text/javascript" ></script>
+    <script src="<?php echo get_template_directory_uri(); ?>/js/libs/fancybox.min.js" type="text/javascript" ></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/theme.js" type="text/javascript" ></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/index-slider.js" type="text/javascript" ></script>
     
