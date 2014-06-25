@@ -38,19 +38,27 @@ the_post();
 					'blog_id'      => $GLOBALS['blog_id'],
 					'meta_query'   => array(),
 					'include'      => array(),
-					'exclude'      => array(),
-					'orderby'      => 'user_nicename',
+					'exclude'      => array('administrator'),
+					'orderby'      => 'wp_capabilities',
 					'order'        => 'ASC',
 					'count_total'  => false,
 					'fields'       => 'all',
 		);
 		$usuarios = get_users($args);
-
+		foreach($usuarios as $u){
+			if($u->user_login != 'admin'){
+				if($u->user_login == 'djalma'){
+					array_unshift($pastores,$u);
+				}else{
+					$pastores[] = $u;
+				}
+			}
+		}
 		?>
 		<div class="row people text-center">
 		<?php
 		if(count($usuarios==null)):
-			foreach($usuarios as $k=>$u):
+			foreach($pastores as $k=>$u):
 				$userMeta = get_user_meta($u->ID);
 				$imgUrl = get_cupp_meta($u->ID,'thumbnail');
 		?>
@@ -64,7 +72,6 @@ the_post();
 					<?php echo $userMeta['description'][0]?>
 					</p>
 				</div>
-				
 			</div>
 		<?php
 			endforeach;
@@ -115,7 +122,7 @@ the_post();
 	?>
 	
 	<?php
-		$args = array('post_type'=>'page','name'=>'valores');
+		$args = array('post_type'=>'page','name'=>'propositos');
 		query_posts($args);
 		if(have_posts()):
 			the_post();

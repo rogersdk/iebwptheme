@@ -4,7 +4,7 @@ Template Name: Archives
 */
 get_header();
 ?>		
-<div class="container listas">
+<div class="container listas conteudo">
 	<div class="section_header">
 		<h3>
 			<?php

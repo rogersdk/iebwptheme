@@ -3,7 +3,9 @@
 		<?php
 		$args = array(
 		    'post_type' =>  'post',
-	        'posts_per_page'    =>  '5'
+	        'posts_per_page'    =>  '5',
+			'meta_key'	=>	'ieb_destaque',
+			'meta_value'	=>	1
 		);
 		query_posts($args);
 		if(have_posts()):
@@ -35,7 +37,6 @@
         $args = array(
             'post_type'     =>  'post',
             'posts_per_page'   => 3,
-        	'offset'		=> 3
         );
 
         query_posts($args);
@@ -54,7 +55,7 @@
                     </h4>    
                 </div>
             
-                <a href="#" >
+                <a href="<?php the_permalink();?>" >
                     <?php the_post_thumbnail('x-small-image',array('class'=>'img-circle')); ?>
                 </a>
                 

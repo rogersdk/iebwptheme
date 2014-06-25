@@ -20,6 +20,23 @@ function ieb_register_meta_boxes( $meta_boxes ){
 	);
 	
 	$meta_boxes[] = array(
+		'id' => 'destaque',
+		'title' => __( 'Destacar Postagem', 'rwmb' ),
+		'pages' => array( 'post'),
+		'context' => 'normal',
+		'priority' => 'high',
+		'autosave' => true,
+		'fields'	=>	array(
+							array(
+								'name' => __( 'Deseja destacar esta postagem?', 'rwmb' ),
+								'id' => "{$prefix}destaque",
+								'desc' => __( 'Marque para que a postagem seja destacada no site.', 'rwmb' ),
+								'type' => 'checkbox'
+							),
+						)
+	);
+	
+	$meta_boxes[] = array(
 		'id'	=>	'ministerios',
 		'title'	=>	__('Informações Adicionais','rwmb'),
 		'pages'	=>	array('ministerio'),
@@ -48,7 +65,7 @@ function ieb_register_meta_boxes( $meta_boxes ){
 	$meta_boxes[] = array(
 		'id'	=>	'ministerios-galeria',
 		'title'	=>	__('Galerias','rwmb'),
-		'pages'	=>	array('ministerio'),
+		'pages'	=>	array('ministerio','post'),
 		'context'	=>	'normal',
 		'autosave'	=>	true,
 		'fields'	=>	array(
